@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cloth Store</title>
+
+  <!-- Google Font: Source Sans Pro -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css">
+  <!-- overlayScrollbars -->
+  <link rel="stylesheet" href="../../plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
+</head>
+<body class="hold-transition sidebar-mini layout-fixed">
+<!-- Site wrapper -->
+<div class="wrapper">
+  <!-- Navbar -->
+  <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+    <!-- Left navbar links -->
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+      </li>
+      <li class="nav-item d-none d-sm-inline-block">
+        <a href="/" class="nav-link">Home</a>
+      </li>
+      
+    </ul>
+
+    <!-- Right navbar links -->
+    
+  </nav>
+  <!-- /.navbar -->
+
+  <!-- Main Sidebar Container -->
+  <aside class="main-sidebar main-sidebar-custom sidebar-dark-primary elevation-4">
+    <!-- Brand Logo -->
+    <a href="/" class="brand-link">
+      <img src="../../dist/img/logo.jpeg" alt="ClothStore Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+      <span class="brand-text font-weight-light">Cloth Store</span>
+    </a>
+
+   <!-- Sidebar Menu -->
+      <nav class="mt-2">
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+               
+          
+          <li class="nav-item menu-open">
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="/create" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Add Product</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/updatestock" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Update Stock</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/deleteproduct" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Delete Product</p>
+                </a>
+              </li>
+
+              <li class="nav-item">
+                <a href="/salesdetails" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Sales Details</p>
+                </a>
+              </li>
+			  
+              
+            </ul>
+          </li>
+          
+          
+      </nav>
+      <!-- /.sidebar-menu -->
+    </div>
+    <!-- /.sidebar -->
+
+    <div class="sidebar-custom">
+      <a href="#" class="btn btn-link"><i class="fas fa-cogs"></i></a>
+      <a href="#" class="btn btn-secondary hide-on-collapse pos-right">Help</a>
+    </div>
+    <!-- /.sidebar-custom -->
+  </aside>
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>Cloth Store Inventory Management</h1>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+
+        <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">Sales Details</h3>
+        
+              <div class="card-tools">
+                <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
+                  <i class="fas fa-minus"></i></button>
+                <button type="button" class="btn btn-tool" data-card-widget="remove" data-toggle="tooltip" title="Remove">
+                  <i class="fas fa-times"></i></button>
+              </div>
+            </div>
+        </div>
+
+        <div class="card-body table-responsive p-0" style="height: 400px;">
+            <table class="table table-striped table-head-fixed text-nowrap">
+            <thead>
+                <tr>
+                    <th style="width: 20%" >Purchase Date</th>
+                    <th style="width: 20%" >Product ID</th>
+                    <th style="width: 20%" >Price</th>
+                    <th style="width: 20%" >Quantity</th>
+                    <th style="width: 20%" >Total Sales</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% for(var i=0;i <data.length;i++) { %>
+                    <tr>
+                        <td><%=data[i].pdate %></td>
+                        <td><%=data[i].pid %></td>
+                        <td><%=data[i].price %></td>
+                        <td><%=data[i].quantity %></td>
+                        <td><%=data[i].totsales %></td>
+                        
+                    </tr>
+                <% } %>
+
+        
+            </tbody>
+            </table>
+            <div class="card-footer clearfix">
+                <button type="button" onClick="location.href='/updatesales'" class="btn btn-primary float-left"><i class="fas fa-plus"></i> Update Sales</button>
+            </div><br><br><br>
+        </div>
+        <div class="row no-print">
+          <div class="col-12">
+            <a href="#" rel="noopener" target="_blank" class="btn btn-default"><i class="fas fa-print"></i> Print</a>
+            <button type="button" onClick="location.href='/toexcel'" class="btn btn-success float-right"><i class="far fa-credit-card"></i> Generate Excel
+            </button>
+          </div>
+        </div>
+
+        
+
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+
+  <footer class="main-footer">
+    <div class="float-right d-none d-sm-block">
+      <b>Version</b> 3.1.0
+    </div>
+    <strong>Copyright &copy; 2014-2021 <span style="color: blue;">Cloth Store</span></strong> All rights reserved.
+  </footer>
+
+  <!-- Control Sidebar -->
+  <aside class="control-sidebar control-sidebar-dark">
+    <!-- Control sidebar content goes here -->
+  </aside>
+  <!-- /.control-sidebar -->
+</div>
+<!-- ./wrapper -->
+
+<!-- jQuery -->
+<script src="../../plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- overlayScrollbars -->
+<script src="../../plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+<!-- AdminLTE App -->
+<script src="../../dist/js/adminlte.min.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="../../dist/js/demo.js"></script>
+</body>
+</html>
